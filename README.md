@@ -23,11 +23,11 @@ Under "SPONSORS ADD INFO HERE" heading below, include the following:
   - [X] external contracts called in each
   - [X] libraries used in each
 - [X] Describe any novel or unique curve logic or mathematical models implemented in the contracts
-- [ ] Does the token conform to the ERC-20 standard? In what specific ways does it differ?
-- [ ] Describe anything else that adds any special logic that makes your approach unique
-- [ ] Identify any areas of specific concern in reviewing the code
-- [ ] Add all of the code to this repo that you want reviewed
-- [ ] Create a PR to this repo with the above changes.
+- [X] Does the token conform to the ERC-20 standard? In what specific ways does it differ?
+- [X] Describe anything else that adds any special logic that makes your approach unique
+- [X] Identify any areas of specific concern in reviewing the code
+- [X] Add all of the code to this repo that you want reviewed
+- [X] Create a PR to this repo with the above changes.
 
 ---
 
@@ -67,7 +67,22 @@ Under "SPONSORS ADD INFO HERE" heading below, include the following:
 - Starts January 20, 2022 00:00 UTC
 - Ends January 26, 2022 23:59 UTC
 
-# Contracts
+# Overview
+ElasticSwap is the first Automated Market Maker (AMM) built explicitly to support elastic supply tokens. Our goal is to provide
+a familiar AMM experience to users that supports the many newly released rebasing tokens.  Previous AMMs, like Uniswap have
+not provided workable solutions to rebasing token or have even advised protocols from creating them. 
+
+For example the Uniswap [V2 Docs](https://docs.uniswap.org/protocol/V2/reference/smart-contracts/common-errors#rebasing-tokens) have this warning:
+
+```
+While positive rebalancing does not break any functionality of Uniswap, those interested in them should be aware that the positive balance found in any pair will be freely available for taking.
+```
+
+While supplying liquidity in a Uniswap V2 pool, liquidity providers are losing out on any rebasing that occurs and leaving it up for grabs for anyone.
+
+We have solved this problem, allowing liquidity providers to receive their expected rebases while still providing liquidity in our pools. 
+
+## Contracts
 
 | Contract | SLOC | External Contracts Called | Libraries Used|
 |----------|------|---------------------------|---------------|
@@ -75,8 +90,30 @@ Under "SPONSORS ADD INFO HERE" heading below, include the following:
 | ExchangeFactory.sol | 85 | NA | OpenZeppelin |
 | MathLib.sol | 709 | NA | NA |
 
-*** Please note: All source code in src/contracts/mocks is explicitly out of scope and is used for testing only***
+#### Important Notes:
 
-# ElasticSwap Math
+ - **All source code in src/contracts/mocks is explicitly out of scope and is used for testing only**
 
-ElasticSwap employs a novel AMM approach that is outlined in the document [here](https://github.com/ElasticSwap/elasticswap/blob/develop/ElasticSwapMath.md). Please review the examples and this document. 
+ - **Fee on Transfer Tokens are NOT supported in our current implementation**
+
+## Protocol Vocabulary
+
+**Exchange** - a single instance of our amm that represents a `Base Token` and `Quote Token` Pair.
+
+**Base Token** - an arbitrary ERC20 token that may be a token with elastic supply / rebases. (think sOHM, sKLIMA, etc)
+
+**Quote Token** - an arbitrary ERC20 token that should be a token that does not rebase / has fixed supply.
+
+**Decay** - the result of the imbalance in tokens that occurs immediately after a rebase occurs in the `Base Token`. See our math document below for more information on this important concept. 
+
+
+## ElasticSwap Math
+
+Our novel AMM approach is made possible by a mathematical model that ensures equality among all liquidity providers in the light of
+tokens that do not have a fixed supply. The math that allows for this functionality is outlined in this [document](https://github.com/ElasticSwap/elasticswap/blob/develop/ElasticSwapMath.md). Please review the examples in this document to understand the math around how our unique AMM works.
+
+## Running Tests
+We have developed this protocol using HardHat and there is extensive test coverage that should
+help Wardens understand functionality and also probe at potential issues.
+
+To run tests please see instructions in the README.md inside of ./elasticswap
