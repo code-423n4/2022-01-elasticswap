@@ -18,11 +18,11 @@ Some of the checklists in this doc are for **C4 (🐺)** and some of them are fo
 
 Under "SPONSORS ADD INFO HERE" heading below, include the following:
 
-- [ ] Name of each contract and:
-  - [ ] lines of code in each
-  - [ ] external contracts called in each
-  - [ ] libraries used in each
-- [ ] Describe any novel or unique curve logic or mathematical models implemented in the contracts
+- [X] Name of each contract and:
+  - [X] lines of code in each
+  - [X] external contracts called in each
+  - [X] libraries used in each
+- [X] Describe any novel or unique curve logic or mathematical models implemented in the contracts
 - [ ] Does the token conform to the ERC-20 standard? In what specific ways does it differ?
 - [ ] Describe anything else that adds any special logic that makes your approach unique
 - [ ] Identify any areas of specific concern in reviewing the code
@@ -67,6 +67,16 @@ Under "SPONSORS ADD INFO HERE" heading below, include the following:
 - Starts January 20, 2022 00:00 UTC
 - Ends January 26, 2022 23:59 UTC
 
-This repo will be made public before the start of the contest. (C4 delete this line when made public)
+# Contracts
 
-[ ⭐️ SPONSORS ADD INFO HERE ]
+| Contract | SLOC | External Contracts Called | Libraries Used|
+|----------|------|---------------------------|---------------|
+| Exchange.sol | 326 | ERC20.sol | MathLib.sol, OpenZeppelin |
+| ExchangeFactory.sol | 85 | NA | OpenZeppelin |
+| MathLib.sol | 709 | NA | NA |
+
+*** Please note: All source code in src/contracts/mocks is explicitly out of scope and is used for testing only***
+
+# ElasticSwap Math
+
+ElasticSwap employs a novel AMM approach that is outlined in the document [here](https://github.com/ElasticSwap/elasticswap/blob/develop/ElasticSwapMath.md). Please review the examples and this document. 
