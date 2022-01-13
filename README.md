@@ -71,9 +71,7 @@ not provided workable solutions to rebasing token or have even advised protocols
 
 For example the Uniswap [V2 Docs](https://docs.uniswap.org/protocol/V2/reference/smart-contracts/common-errors#rebasing-tokens) have this warning:
 
-```
-While positive rebalancing does not break any functionality of Uniswap, those interested in them should be aware that the positive balance found in any pair will be freely available for taking.
-```
+>While positive rebalancing does not break any functionality of Uniswap, those interested in them should be aware that the positive balance found in any pair will be freely available for taking.
 
 While supplying liquidity in a Uniswap V2 pool, liquidity providers are losing out on any rebasing that occurs and leaving it up for grabs for anyone.
 
