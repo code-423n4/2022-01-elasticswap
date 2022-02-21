@@ -1,5 +1,5 @@
 # ElasticSwap contest details
-- $47,500 USDC main award pot
+- $42,500 USDC main award pot
 - $2,500 USDC gas optimization award pot
 - Join [C4 Discord](https://discord.gg/code4rena) to register
 - Submit findings [using the C4 form](https://code4rena.com/contests/2022-01-elasticswap-contest/submit)
